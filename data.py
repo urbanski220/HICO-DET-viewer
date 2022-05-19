@@ -24,7 +24,7 @@ def load_anno(matdata,name):
     return df
 
 def getIndexes(x,pre):
-    if(pre == 'images/test2015/HICO_test2015_0000'):
+    if(pre == '../images/test2015/HICO_test2015_0000'):
         ex = test.loc[test[x-1] == 1]
         amb = test.loc[test[x-1] == 0]
         n_ex = test.loc[test[x-1] == -1]
@@ -37,7 +37,7 @@ def getIndexes(x,pre):
 def displayImage(image):
     zeros = ""
     
-    if (pre == 'images/test2015/HICO_test2015_0000'):
+    if (pre == '../images/test2015/HICO_test2015_0000'):
         for i in range(4-len(image)):
             zeros += "0"
     else:
@@ -67,9 +67,9 @@ def displayHOI():
     
     if (val < 1):
         return
-    elif (pre == 'images/test2015/HICO_test2015_0000' and val > 9658):
+    elif (pre == '../images/test2015/HICO_test2015_0000' and val > 9658):
         return
-    elif (pre == 'images/train2015/HICO_train2015_000' and val > 38116):
+    elif (pre == '../images/train2015/HICO_train2015_000' and val > 38116):
         return
     
     for label in labels: 
@@ -130,7 +130,7 @@ def displayHOI():
     displayImage(image)    
 
 
-pre = "images/test2015/HICO_test2015_0000"
+pre = "../images/test2015/HICO_test2015_0000"
 past = ".jpg"
 check = "check.png"
 cross = "cross.png"
@@ -138,7 +138,7 @@ quest = "questionmark.png"
 
 labels = []
 
-matfile = 'anno.mat'
+matfile = '../anno.mat'
 matdata = spio.loadmat(matfile)      
 
 inter = load_list_action(matdata)  
@@ -164,10 +164,10 @@ confirm.place(relx=0.5, rely=0.1, anchor='n')
 r = tk.StringVar()
 r.set(pre)
 tk.Radiobutton(root, text="Training data", variable=r, 
-               value="images/train2015/HICO_train2015_000", font=("Arial",15), 
+               value="../images/train2015/HICO_train2015_000", font=("Arial",15), 
                command=lambda: clicked(r.get())).pack(side="top", anchor="w")
 tk.Radiobutton(root, text="Testing data", variable=r, 
-               value="images/test2015/HICO_test2015_0000", font=("Arial",15), 
+               value="../images/test2015/HICO_test2015_0000", font=("Arial",15), 
                command=lambda: clicked(r.get())).pack(side="top", anchor="w")
 
 root.mainloop()
